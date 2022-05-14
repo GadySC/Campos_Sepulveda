@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba2 CamposSepulveda", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba2Modelo", "Prueba2Modelo\Prueba2Modelo.csproj", "{0445E97B-7191-42F5-A72D-32486E097A26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorSocketUtils", "..\CShap-AP-11--170\Mensaje\EjercicioSocketServidor\ServidorSocketUtils\ServidorSocketUtils.csproj", "{48C487B5-927C-47F4-9C3C-05B3F9229C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorSocketUtils", "ServidorSocketUtils\ServidorSocketUtils.csproj", "{48C487B5-927C-47F4-9C3C-05B3F9229C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

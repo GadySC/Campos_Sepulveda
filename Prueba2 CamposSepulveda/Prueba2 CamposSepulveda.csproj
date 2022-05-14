@@ -54,13 +54,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CShap-AP-11--170\Mensaje\EjercicioSocketServidor\ServidorSocketUtils\ServidorSocketUtils.csproj">
-      <Project>{48c487b5-927c-47f4-9c3c-05b3f9229c87}</Project>
-      <Name>ServidorSocketUtils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Prueba2Modelo\Prueba2Modelo.csproj">
       <Project>{0445e97b-7191-42f5-a72d-32486e097a26}</Project>
       <Name>Prueba2Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServidorSocketUtils\ServidorSocketUtils.csproj">
+      <Project>{48c487b5-927c-47f4-9c3c-05b3f9229c87}</Project>
+      <Name>ServidorSocketUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
