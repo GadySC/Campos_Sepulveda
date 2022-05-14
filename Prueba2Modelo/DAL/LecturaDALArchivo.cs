@@ -1,4 +1,4 @@
-﻿using Prueba2_CamposSepulveda.DTO;
+﻿using Prueba2Modelo.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,10 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prueba2_CamposSepulveda.DAL
+namespace Prueba2Modelo.DAL
 {
+
     public class LecturaDALArchivo : LecturaDAL
     {
+        private LecturaDALArchivo() { 
+        
+        }
+
+        private static LecturaDALArchivo instancia;
+
+        public static LecturaDAL GetInstancia() {
+            if (instancia == null) { 
+                instancia = new LecturaDALArchivo();
+            }
+            return instancia;
+        }
+
         private static string archivo = "lectura.txt";
         private static string ruta = Directory.GetCurrentDirectory() + "/" + archivo;
 
@@ -55,9 +69,6 @@ namespace Prueba2_CamposSepulveda.DAL
                             string[] textoarr = texto.Split('|');
                             string num_medidor = textoarr[0];
                             Medidor medidor = new Medidor(num_medidor);
-                            //Object medidor1 = medidor;
-                            //string medidor2 = medidor1.ToString();
-                            //Medidor medidor = System.Convert.ToString(textoarr[0]);
                             DateTime fecha = Convert.ToDateTime(textoarr[1]);
                             double Consumo = Convert.ToDouble(textoarr[2]);
                             Lectura lectura1 = new Lectura()
@@ -79,39 +90,6 @@ namespace Prueba2_CamposSepulveda.DAL
                 Console.WriteLine("");
                 return lectura;
             }
-
-            //            *********** Ignorar esto *************
-
-            //using (StreamReader reader = new StreamReader(ruta))
-            //{
-
-            //    string texto;
-
-            //    do
-            //    {
-            //        texto = reader.ReadLine();
-            //        if (texto != null)
-            //        {
-            //            string[] textoarr = texto.Split(';');
-            //            string num_medidor = textoarr[0];
-            //            Medidor medidor = new Medidor(num_medidor);
-            //            //Object medidor1 = medidor;
-            //            //string medidor2 = medidor1.ToString();
-            //            //Medidor medidor = System.Convert.ToString(textoarr[0]);
-            //            DateTime fecha = Convert.ToDateTime(textoarr[1]);
-            //            double Consumo = Convert.ToDouble(textoarr[2]);
-            //            Lectura lectura1 = new Lectura()
-            //            {
-            //                Medidor = medidor,
-            //                Fecha = fecha,
-            //                Consumo = Consumo,
-            //            };
-
-            //            lectura.Add(lectura1);
-            //        }
-            //    } while (texto != null);
-            //}
-            //return lectura;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prueba2_CamposSepulveda.DTO
+namespace Prueba2Modelo.DTO
 {
     public class Lectura
     {

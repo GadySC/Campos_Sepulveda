@@ -1,16 +1,18 @@
-﻿using Prueba2_CamposSepulveda.DAL;
-using Prueba2_CamposSepulveda.DTO;
+﻿using EjercicioMensajero.Comunicacion;
+using Prueba2Modelo.DAL;
+using Prueba2Modelo.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Prueba2_CamposSepulveda
 {
     public class Program
     {
-        static LecturaDAL lecturaDAL = new LecturaDALArchivo();
+         private static LecturaDAL lecturaDAL = LecturaDALArchivo.GetInstancia();
 
         static void IngresarLectura() {
             string num;
@@ -51,24 +53,24 @@ namespace Prueba2_CamposSepulveda
                 Consumo = consumo,
             };
 
-            lecturaDAL.IngresarLectura(lectura1);
+            lock (lecturaDAL) {
 
-            Console.WriteLine("Numero de medidor: {0}", lectura1.Medidor.Num_Medidor);
-            Console.WriteLine("Fecha: {0}", lectura1.Fecha);
-            Console.WriteLine("Lectura: {0}", lectura1.Consumo);
-            Console.WriteLine("");
-            Console.ReadKey();
+                lecturaDAL.IngresarLectura(lectura1);
 
+            }
         }
         static void MostrarLectura()
         {
-            List<Lectura> listaLectura = lecturaDAL.ObtenerLecturas();
+            List<Lectura> listaLectura = null;
+
+            lock (lecturaDAL) {
+                listaLectura = lecturaDAL.ObtenerLecturas();
+            }
             for (int i = 0; i < listaLectura.Count(); i++)
             {
                 Lectura lectura = listaLectura[i];
                 Console.WriteLine("Numero de Medidor: {0}, Fecha: {1}, Consumo: {2}", lectura.Medidor.Num_Medidor, Convert.ToDateTime(lectura.Fecha), lectura.Consumo);
                 Console.WriteLine("");
-
             }
         }
 
@@ -76,6 +78,9 @@ namespace Prueba2_CamposSepulveda
 
         static void Main(string[] args)
         {
+            ThreadServidor thread = new ThreadServidor();
+            Thread t = new Thread(new ThreadStart(thread.Ejecutar));
+            t.Start();
             while (Menu()) ;
         }
 
