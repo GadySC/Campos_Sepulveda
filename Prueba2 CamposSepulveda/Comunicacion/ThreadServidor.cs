@@ -14,6 +14,7 @@ namespace EjercicioMensajero.Comunicacion
 {
     public class ThreadServidor
     {
+        // Hola
         private LecturaDAL lecturaDAL = LecturaDALArchivo.GetInstancia();
         public void Ejecutar() {
             int puerto = Convert.ToInt32(ConfigurationManager.AppSettings["puerto"]);
