@@ -78,6 +78,11 @@ namespace Prueba2_CamposSepulveda
 
         static void Main(string[] args)
         {
+            // Integrantes:
+            // - Gady Sepulveda
+            // - Tatiana Campos
+            // ****************
+
             ThreadServidor thread = new ThreadServidor();
             Thread t = new Thread(new ThreadStart(thread.Ejecutar));
             t.Start();
